@@ -1,0 +1,6 @@
+breakpoints 
+if the code quality is less then 90% then code can be failed else moved to next
+stage, similar to all below steps.
+junit 
+jcoco
+sonarqube

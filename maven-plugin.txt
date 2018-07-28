@@ -1,0 +1,74 @@
+docker-maven-plugin steps:
+
+1.Use start.spring.io to create a maven project.
+2.https://github.com/spotify/docker-maven-plugin 
+
+open start.spring.io
+
+create one project by giving artifact id and group id
+
+mvn clean install
+
+
+3.Open the Maven Project and add below code in pom.xml file
+	<plugin>
+	  <groupId>com.spotify</groupId>
+	  <artifactId>docker-maven-plugin</artifactId>
+	  <version>0.4.5</version>
+	  <configuration>
+		<imageName>demoibm</imageName>
+		<baseImage>java</baseImage>
+		<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+		<!-- copy the service's jar file from target into the root directory of the image --> 
+		<resources>
+		   <resource>
+			 <targetPath>/</targetPath>
+			 <directory>${project.build.directory}</directory>
+			 <include>${project.build.finalName}.jar</include>
+		   </resource>
+		</resources>
+	  </configuration>
+	</plugin>
+
+	Note:
+	1.add version = 0.4.5
+	2.add packaging = war (If war add war,if jar add jar)
+	3.add enpPoint = ["java", "-jar", "/${project.build.finalName}.war"] - (if war add .war,if jar add .jar)
+	4.add include = ${project.build.finalName}.war - (if war add .war,if jar add .jar)
+	
+4.then bulid the project mvn clean install -U
+5.create a docker folder in project
+6.install Oracle VM Virtual Box,DockerToolbox and Docker for Windows Installer
+	1.http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html
+	2.https://store.docker.com/editions/community/docker-ce-desktop-windows
+	3.https://docs.docker.com/toolbox/toolbox_install_windows/
+7.Enable Hyper-V
+	https://stackoverflow.com/questions/36885985/cannot-start-docker-after-installation-on-windows
+8.copy project directory and start the DockerToolbox.
+9.enter the command 
+	 cd C:\Users\ChiyetiHarishkumarRe\Downloads\docket-sample
+	 mvn clean package docker:build	(if build fails use step 9 commands)
+	 docker images
+	 docker run -p 8080:8080 -t nt-docker-example
+	 docker-machine ls
+	 http://192.168.99.100:8080/
+
+10.	docker-machine restart default
+	docker-machine env
+
+http://localhost:9000/dashboard/index/demo.ibm:IBMDEMO
+
+mvn sonar:sonar \
+  -Dsonar.organization=anilp02-github \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=30848f0071d3ec5bb1b05f845dcd0d9aec5e44da
+	
+
+
+https://yourlearning.ibm.com/#activity/URL-1521566975373 GDPR credits
+
+git-example
+
+
+docker tag imagename anilp02/dockerpm
+docker push anilp02/dockerpm

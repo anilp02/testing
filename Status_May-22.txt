@@ -1,0 +1,11 @@
+Design - dhruva - will be done by this friday
+Iteration 1 - Microservices - coming friday dhruva
+referrence data - Dilip/Dhruva - Schema is ready, in good shape, Friday will be done
+security - waiting for vishal - not required for iteration 1 - will be implemented in sprint 2
+Devops- Sprint 1 setting up by this friday
+Adapter - Dhruva - not part of sprint 1
+Event Framework - it is part of sprint 1 - satish - will be done by friday
+Data - by friday
+
+Multifond - understanding testcases, Access is not provided.
+Fundutility - we received user stories/use cases from shibe.. will start looking in to them
